@@ -432,7 +432,7 @@ function PrivacyPage() {
           <li>Customer data encrypted at rest and in transit.</li>
           <li>Public security contact: <a href={`mailto:${COMPANY.emailWebmaster}`} className="underline">{COMPANY.emailWebmaster}</a>.</li>
         </ul>
-        <p className="text-xs text-neutral-500">This combined policy and security outline is provided for the Solaris coursework project. Update accordingly before production launch.</p>
+        <p className="text-xs text-neutral-500">We Do not Sell Your Data.</p>
       </div>
     </section>
   );
