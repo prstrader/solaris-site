@@ -174,7 +174,9 @@ const PAGES = {
 };
 
 // Added Terms button to top navigation
+// Responsive nav: desktop tabs + mobile hamburger dropdown
 function Nav({ current, onNav }) {
+  const [open, setOpen] = useState(false);
   const tabs = [
     { id: PAGES.HOME, label: "Shop" },
     { id: PAGES.ABOUT, label: "About" },
@@ -183,20 +185,52 @@ function Nav({ current, onNav }) {
     { id: PAGES.TESTIMONIALS, label: "Testimonials" },
     { id: PAGES.SPANISH, label: "Español" },
     { id: PAGES.PRIVACY, label: "Privacy" },
-    { id: PAGES.TERMS, label: "Terms" }, // new terms tab
+    { id: PAGES.TERMS, label: "Terms" }
   ];
+
   return (
-    <nav className="flex flex-wrap items-center gap-2">
-      {tabs.map((t) => (
-        <button
-          key={t.id}
-          onClick={() => onNav(t.id)}
-          className={`rounded-full px-3 py-1 text-sm border ${current === t.id ? "bg-[var(--brand-accent)] text-white" : "bg-white"}`}
-        >
-          {t.label}
-        </button>
-      ))}
-    </nav>
+    <div className="relative">
+      {/* Mobile menu button */}
+      <button
+        className="sm:hidden rounded-full border px-3 py-1 text-sm bg-white"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-label="Toggle navigation"
+      >
+        Menu
+      </button>
+
+      {/* Desktop tabs */}
+      <nav className="hidden sm:flex flex-wrap items-center gap-2">
+        {tabs.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => onNav(t.id)}
+            className={`rounded-full px-3 py-1 text-sm border ${current === t.id ? "bg-[var(--brand-accent)] text-white" : "bg-white"}`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </nav>
+
+      {/* Mobile dropdown */}
+      {open && (
+        <div className="absolute right-0 mt-2 w-52 overflow-hidden rounded-xl border bg-white shadow-lg sm:hidden z-50">
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => {
+                onNav(t.id);
+                setOpen(false);
+              }}
+              className={`block w-full text-left px-4 py-2 text-sm hover:bg-neutral-50 ${current === t.id ? "font-semibold text-[var(--brand-primary)]" : "text-neutral-800"}`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -213,9 +247,9 @@ function HeaderBrand() {
   const starSrcs = ["/images/star-gold.png"];
   return (
     <div className="flex items-center gap-3">
-      <ImageSafe srcs={starSrcs} alt="Solaris star" className="h-7 w-7 object-contain" />
+      <ImageSafe srcs={starSrcs} alt="Solaris star" className="h-8 w-8 md:h-7 md:w-7 object-contain" />
       <a href={COMPANY.baseUrl} className="block">
-        <ImageSafe srcs={logoSrcs} alt="Solaris wordmark" className="h-8 md:h-9 object-contain" />
+        <ImageSafe srcs={logoSrcs} alt="Solaris wordmark" className="h-9 md:h-10 object-contain" />
       </a>
     </div>
   );
@@ -525,7 +559,7 @@ export default function App() {
     <div className="min-h-screen">
       <BrandStyles />
       <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2 md:px-4 md:py-3">
           <HeaderBrand />
           <div className="flex items-center gap-3">
             <Nav current={page} onNav={setPage} />
