@@ -66,7 +66,7 @@ const PRODUCTS = [
     defaultUrls: ["/images/glasses.jpg"],
     tagline: "Luxury vision redefined",
     description:
-      "Premium Solaris sunglasses featuring lightweight frames with removable magnetic lenses for versatile style and all day comfort.",
+      "Premium Solaris sunglasses featuring lightweight frames with removable magnetic lenses for versatile style and all day comfort. One size sport fit (medium Large), TR90 lightweight frame, polarized UV400 lenses.",
   },
   {
     id: "ln1",
@@ -75,7 +75,7 @@ const PRODUCTS = [
     defaultUrls: ["/images/lenses.jpg"],
     tagline: "Swap and shine",
     description:
-      "A second set of high quality interchangeable lenses to match your Solaris frames; pop them in or out instantly for different looks.",
+      "A second set of high quality interchangeable lenses to match your Solaris frames; pop them in or out instantly for different looks. Fits all Solaris frames, shatter resistant polycarbonate, available in multiple tints and polarizations.",
   },
   {
     id: "bd1",
@@ -84,7 +84,7 @@ const PRODUCTS = [
     defaultUrls: ["/images/bundle.jpg"],
     tagline: "Best value: save $10",
     description:
-      "Complete Solaris set including one pair of signature frames and two pairs of removable magnetic lenses for day and night wear.",
+      "Complete Solaris set including one pair of signature frames and two pairs of removable magnetic lenses for day and night wear. Includes one Solaris frame plus two lens sets, same one size sport fit and polarized UV400 protection.",
   },
 ];
 
@@ -290,6 +290,7 @@ function AboutPage() {
     { name: "Samantha Gonzales", title: "VP of Marketing", blurb: "Leads brand strategy, partnerships, and market outreach.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format" },
     { name: "Abby Dulin", title: "VP of Customer Service & Outreach", blurb: "Focuses on customer satisfaction and community engagement.", img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=600&auto=format" },
     { name: "Ryder Edwards", title: "VP of Technology", blurb: "Oversees digital infrastructure and product innovation.", img: "/images/ryder.png" },
+    { name: "Troy Johnson", title: "VP of Products & Service", blurb: "Leads product design and service standards. With 7 years in premium eyewear and outdoor gear, Troy makes sure every Solaris frame and lens performs in real world use.", img: "/images/troy1.png" },
   ];
   return (
     <section className="mx-auto max-w-6xl px-4 py-8">
@@ -432,7 +433,7 @@ function PrivacyPage() {
           <li>Customer data encrypted at rest and in transit.</li>
           <li>Public security contact: <a href={`mailto:${COMPANY.emailWebmaster}`} className="underline">{COMPANY.emailWebmaster}</a>.</li>
         </ul>
-        <p className="text-xs text-neutral-500">We Do not Sell Your Data.</p>
+        
       </div>
     </section>
   );
@@ -449,6 +450,8 @@ function TermsPage() {
         <li>Packages include shipping but not signature confirmation by default.</li>
         <li>International customers are responsible for any duties, taxes, or import fees applied by their country’s customs authorities.</li>
         <li>We reserve the right to refuse service or cancel orders at our discretion.</li>
+        <li>All Solaris products include a 30 day satisfaction guarantee. If you are not happy, contact support for a return.</li>
+        <li>Frames and lenses include a 90 day defect warranty covering manufacturer issues.</li>
       </ul>
       <p className="mt-6 text-sm text-neutral-600">For privacy and security details, see our combined <button onClick={() => window.dispatchEvent(new CustomEvent('solaris-nav', { detail: 'PRIVACY' }))} className="underline">Privacy Policy</button>.</p>
     </section>
